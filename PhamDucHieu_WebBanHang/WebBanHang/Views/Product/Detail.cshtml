@@ -1,0 +1,184 @@
+﻿@model WebBanHang.Context.Product
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<section class="py-3 bg-light">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Category name</a></li>
+            <li class="breadcrumb-item"><a href="#">Sub category</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Items</li>
+        </ol>
+    </div>
+</section>
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content bg-white padding-y">
+    <div class="container">
+
+        <!-- ============================ ITEM DETAIL ======================== -->
+        <div class="row">
+            <aside class="col-md-6">
+                <div class="card">
+                    <article class="gallery-wrap">
+                        <div class="img-big-wrap">
+                            <div> <a href="#"><img src="~/Content/images/all_product/@Model.Avartar"></a></div>
+                        </div> <!-- slider-product.// -->
+                    </article> <!-- gallery-wrap .end// -->
+                </div> <!-- card.// -->
+            </aside>
+            <main class="col-md-6">
+                <article class="product-info-aside">
+
+                    <h2 class="title mt-3">@Model.ProductName</h2>
+
+                    <div class="rating-wrap my-3">
+                        <ul class="rating-stars">
+                            <li style="width:80%" class="stars-active">
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </li>
+                            <li>
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </li>
+                        </ul>
+                        <small class="label-rating text-muted">132 reviews</small>
+                        <small class="label-rating text-success"> <i class="fa fa-clipboard-check"></i> 154 orders </small>
+                    </div> <!-- rating-wrap.// -->
+
+                    <div class="mb-3">
+                        <var class="price h4">@Model.Price</var>
+                        <span class="text-muted">VND</span>
+                    </div> <!-- price-detail-wrap .// -->
+
+                    <p>
+                        @Model.ShortDes
+                    </p>
+
+
+                    <dl class="row">
+                        <dt class="col-sm-3">Công ty sản xuất</dt>
+                        <dd class="col-sm-9"><a href="#">DucHieu Company</a></dd>
+
+                        <dt class="col-sm-3">Số bài viết</dt>
+                        <dd class="col-sm-9">596 065</dd>
+
+                        <dt class="col-sm-3">Bảo hành</dt>
+                        <dd class="col-sm-9">2 năm</dd>
+
+                        <dt class="col-sm-3">Thời gian giao hàng</dt>
+                        <dd class="col-sm-9">3-4 ngày</dd>
+
+                        <dt class="col-sm-3">Tình trạng</dt>
+                        <dd class="col-sm-9">Còn hàng</dd>
+                    </dl>
+
+                    <div class="form-row  mt-4">
+                        <div class="form-group col-md flex-grow-0">
+                            <div class="input-group mb-3 input-spinner">
+                                <div class="input-group-append">
+                                    <button class="btn btn-light" type="button" id="button-minus"> &minus; </button>
+                                </div>
+                                <input type="text" class="form-control" value="1">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-light" type="button" id="button-plus"> + </button>
+                                </div>
+                            </div>
+                        </div> <!-- col.// -->
+                        <div class="form-group col-md">
+                            <a href="#" class="btn  btn-primary">
+                                <i class="fas fa-shopping-cart"></i> <span class="text">Thêm vào giỏ hàng</span>
+                            </a>
+                            <a href="#" class="btn btn-light">
+                                <i class="fas fa-envelope"></i> <span class="text">Liên hệ hỗ trợ</span>
+                            </a>
+                        </div> <!-- col.// -->
+                    </div> <!-- row.// -->
+
+                </article> <!-- product-info-aside .// -->
+            </main> <!-- col.// -->
+        </div> <!-- row.// -->
+        <!-- ================ ITEM DETAIL END .// ================= -->
+
+
+    </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+<!-- ========================= SECTION  ========================= -->
+<section class="section-name padding-y bg">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-8">
+                <h5 class="title-description">Mô tả sản phẩm</h5>
+                <p>@Model.FullDescription</p>
+                <ul class="list-check">
+                    <li>Chất liệu: Vải </li>
+                    <li>Size: S, M , L, XL</li>
+                    <li>Màu sắc: đa dạng</li>
+                </ul>
+
+                <h5 class="title-description">Hướng dẫn sử dụng sản phẩm</h5>
+                <ul class="list-check">
+                    <li>- Không giặt máy giặt tay, tránh nước ở phần da tay</li>
+                    <li>- Chỉ giặt khô , lấy khăn ướt lau</li>
+                    <li>- Không phơi trực tiếp dưới ánh nắng mặt trời</li>
+                    <li>- Có thể dùng cồn lau</li>
+                </ul>
+            </div> <!-- col.// -->
+
+            <aside class="col-md-4">
+
+                <div class="box">
+
+                    <h5 class="title-description">Chính sách đổi trả</h5>
+                    <p>
+                        1. Điều kiện áp dụng (trong vòng 07 ngày kể từ khi nhận sản phẩm) <br />
+                        - Hàng hoá vẫn còn mới, chưa qua sử dụng<br />
+                        - Hàng hoá bị lỗi hoặc hư hỏng do vận chuyển hoặc do nhà sản xuất<br />
+                        2. Trường hợp được chấp nhận:<br />
+                        - Hàng không đúng size, mẫu mã như quý khách đặt hàng<br />
+                        - Không đủ số lượng, không đủ bộ như trong đơn hàng<br />
+                        3. Trường hợp không đủ điều kiện áp dụng chính sách:<br />
+                        - Quá 07 ngày kể từ khi Quý khách nhận hàng<br />
+                        - Gửi lại hàng không đúng mẫu mã, không phải sản phẩm của The Bad God<br />
+                        - Không thích, không hợp, đặt nhầm mã, nhầm màu,...<br />
+                        Do màn hình và điều kiện ánh sáng khác nhau, màu sắc thực tế của sản phẩm có thể chênh lệch khoảng 3-5%<br />
+                    </p>
+                </div> <!-- box.// -->
+            </aside> <!-- col.// -->
+        </div> <!-- row.// -->
+
+    </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+<!-- ========================= SECTION SUBSCRIBE  ========================= -->
+<section class="padding-y-lg bg-light border-top">
+    <div class="container">
+
+        <p class="pb-2 text-center">Delivering the latest product trends and industry news straight to your inbox</p>
+
+        <div class="row justify-content-md-center">
+            <div class="col-lg-4 col-sm-6">
+                <form class="form-row">
+                    <div class="col-8">
+                        <input class="form-control" placeholder="Your Email" type="email">
+                    </div> <!-- col.// -->
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-block btn-warning"> <i class="fa fa-envelope"></i> Subscribe </button>
+                    </div> <!-- col.// -->
+                </form>
+                <small class="form-text">We’ll never share your email address with a third-party. </small>
+            </div> <!-- col-md-6.// -->
+        </div>
+
+
+    </div>
+</section>
+<!-- ========================= SECTION SUBSCRIBE END// ========================= -->
