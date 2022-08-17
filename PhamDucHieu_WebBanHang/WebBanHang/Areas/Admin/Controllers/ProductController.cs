@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -13,19 +14,19 @@ namespace WebBanHang.Areas.Admin.Controllers
     public class ProductController : Controller
     {
         WebBanHangEntities objWebBanHangEntities = new WebBanHangEntities();
-        // GET: Admin/Product
+        // Danh sách sản phẩm
         public ActionResult Index()
         {
             var listProduct = objWebBanHangEntities.Products.ToList();
             return View(listProduct);
         }
-
+        //Chi tiết sản phẩm
         public ActionResult Details(int Id)
         {
             var objProduct = objWebBanHangEntities.Products.Where(n => n.Id == Id).FirstOrDefault();
             return View(objProduct);
         }
-
+        //Thêm sản phẩm
         [HttpGet]
         public ActionResult Create()
         {
@@ -49,6 +50,7 @@ namespace WebBanHang.Areas.Admin.Controllers
                         string extension = Path.GetExtension(objProduct.ImageFile.FileName);
                         //png
                         fileName = fileName + extension;
+                        //fileName = fileName + "_" + long.Parse(DateTime.Now.ToString("yyyyMMddhhmmss")) + extension;
                         //tenhinh.png
                         objProduct.Avartar = fileName;
                         objProduct.ImageFile.SaveAs(Path.Combine(Server.MapPath("~/Content/images/all_product"), fileName));
@@ -65,9 +67,10 @@ namespace WebBanHang.Areas.Admin.Controllers
                 }
 
             }
-            return View(objProduct);
+            return View();
         }
-
+        //Tách hàm thêm sản phẩm ra và gọi nó vào trong hàm "public ActionResult Create(Product objProduct)"
+        [ValidateInput(false)]
         void LoadData()
         {
             Common objCommon = new Common();
@@ -101,6 +104,7 @@ namespace WebBanHang.Areas.Admin.Controllers
             ViewBag.ProductType = objCommon.ToSelectList(dtProductType, "Id", "Name");
         }
 
+        //Xóa
         [HttpGet]
         public ActionResult Delete(int Id)
         {
@@ -119,6 +123,34 @@ namespace WebBanHang.Areas.Admin.Controllers
             objWebBanHangEntities.SaveChanges();
             return RedirectToAction("Index");
         }
+        //Sửa
+        [HttpGet]
+        public ActionResult Edit(int Id, Product obj_Product)
+        {
+            var objProduct = objWebBanHangEntities.Products.Where(n => n.Id == Id).FirstOrDefault();
 
+            return View(obj_Product);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Product obj_Product)
+        {
+            if (obj_Product.ImageFile != null)
+            {
+                string fileName = Path.GetFileNameWithoutExtension(obj_Product.ImageFile.FileName);
+                //ten hinh
+                string extension = Path.GetExtension(obj_Product.ImageFile.FileName);
+                //png
+                fileName = fileName + extension;
+                //fileName = fileName + "_" + long.Parse(DateTime.Now.ToString("yyyyMMddhhmmss")) + extension;
+                //tenhinh.png
+                obj_Product.Avartar = fileName;
+                obj_Product.ImageFile.SaveAs(Path.Combine(Server.MapPath("~/Content/images/all_product"), fileName));
+            }
+
+            objWebBanHangEntities.Entry(obj_Product).State = EntityState.Modified;
+            objWebBanHangEntities.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
