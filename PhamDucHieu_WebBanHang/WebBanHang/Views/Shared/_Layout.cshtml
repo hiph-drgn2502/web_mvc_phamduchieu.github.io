@@ -49,12 +49,12 @@
                         <form action="#" class="search-header">
                             <div class="input-group w-100">
                                 <select class="custom-select border-right" name="category_name">
-                                    <option value="">All type</option>
-                                    <option value="codex">Special</option>
-                                    <option value="comments">Only best</option>
-                                    <option value="content">Latest</option>
+                                    <option value="">Phổ biến nhất</option>
+                                    <option value="codex">Mới nhất</option>
+                                    <option value="codex">Muộn nhất</option>
+                                    <option value="comments">Bán chạy</option>
                                 </select>
-                                <input type="text" class="form-control" placeholder="Search">
+                                <input type="text" class="form-control" placeholder="Tìm kiếm">
 
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="submit">
@@ -72,27 +72,20 @@
                                         <i class="fa fa-user"></i>
                                         <span class="notify">3</span>
                                     </div>
-                                    <small class="text"> Login </small>
+                                    <small class="text"> Đăng nhập </small>
                                 </a>
 
                             </div>
                             <div class="widget-header mr-3">
                                 <a href="#" class="widget-view">
                                     <div class="icon-area">
-                                        <i class="fa fa-comment-dots"></i>
+                                        <i class="fa fa-heart"></i>
                                         <span class="notify">1</span>
                                     </div>
-                                    <small class="text"> Admin </small>
+                                    <small class="text"> Yêu thích </small>
                                 </a>
                             </div>
-                            <div class="widget-header mr-3">
-                                <a href="#" class="widget-view">
-                                    <div class="icon-area">
-                                        <i class="fa fa-store"></i>
-                                    </div>
-                                    <small class="text"> Orders </small>
-                                </a>
-                            </div>
+                            
                             <div class="widget-header">
                                 <a href="#" class="widget-view">
                                     <div class="icon-area">
@@ -101,6 +94,28 @@
                                     <small class="text"> Giỏ hàng </small>
                                 </a>
                             </div>
+
+                            <div class="widget-header">
+                                <div class="dropdown">
+                                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                                             class="rounded-circle"
+                                             height="35"
+                                             alt="Black and White Portrait of a Man"
+                                             loading="lazy"
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Admin</a>
+                                        <a class="dropdown-item" href="#">Settings</a>
+                                        <a class="dropdown-item" href="#">Đăng xuất</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                           
+
                         </div> <!-- widgets-wrap.// -->
                     </div> <!-- col.// -->
                 </div> <!-- row.// -->
