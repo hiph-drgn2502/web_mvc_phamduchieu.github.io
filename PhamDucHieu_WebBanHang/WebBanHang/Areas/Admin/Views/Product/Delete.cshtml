@@ -6,7 +6,8 @@
 }
 
 <div class="content-wrapper">
-    <h2>Delete</h2>
+    <center><strong><h1 class="text-danger">Xóa sản phẩm</h1></strong></center>
+
 
     <h3>Are you sure you want to delete this?</h3>
     <div>
@@ -135,7 +136,7 @@
 
         </dl>
 
-        @using (Html.BeginForm("Delete", "Product", FormMethod.Post, new { enctype = "multipart/form-data"}))
+        @using (Html.BeginForm("Delete", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 

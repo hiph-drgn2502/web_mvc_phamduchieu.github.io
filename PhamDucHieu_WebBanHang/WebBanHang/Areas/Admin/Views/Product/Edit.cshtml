@@ -6,15 +6,13 @@
 }
 
 <div class="content-wrapper">
-    <h2>Edit</h2>
-
+    <center><strong><h1 class="text-danger">SỬA SẢN PHẨM</h1></strong></center>
 
     @using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4>Product</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.Id)
