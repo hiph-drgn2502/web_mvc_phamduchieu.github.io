@@ -5,17 +5,14 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <div class="content-wrapper">
-    @*<script src="~/Scripts/ckeditor/ckeditor.js"></script>*@
-    <h2>Create</h2>
-    <center><strong><h1 class="text-danger">Thêm sản phẩm</h1></strong></center>
-
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+    <center><h1 class="text-danger"><strong>Thêm sản phẩm</strong></h1></center>
 
     @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4>Product</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
@@ -53,13 +50,13 @@
                 @Html.LabelFor(model => model.FullDescription, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
 
-                    @Html.EditorFor(model => model.FullDescription, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.FullDescription, "", new { @class = "text-danger" })
-                    @*@Html.TextAreaFor(model => model.FullDescription, new { htmlAttributes = new { @class = "form-control", @id = "FullDescription" } })
+                    @*@Html.EditorFor(model => model.FullDescription, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FullDescription, "", new { @class = "text-danger" })*@
+                    @Html.TextAreaFor(model => model.FullDescription, new { htmlAttributes = new { @class = "form-control", @id = "FullDescription" } })
                      <script type="text/javascript" lang="javascript">
                         CKEDITOR.replace("FullDescription");
                     </script>
-                    @Html.ValidationMessageFor(model => model.FullDescription, "", new { @class = "text-danger" })*@
+                    @Html.ValidationMessageFor(model => model.FullDescription, "", new { @class = "text-danger" })
                 </div>
             </div>
 

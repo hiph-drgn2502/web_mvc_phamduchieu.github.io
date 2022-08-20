@@ -160,6 +160,8 @@ namespace WebBanHang.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Edit(Product obj_Product)
         {
+            //this.LoadData();
+
             if (obj_Product.ImageFile != null)
             {
                 string fileName = Path.GetFileNameWithoutExtension(obj_Product.ImageFile.FileName);
@@ -172,6 +174,15 @@ namespace WebBanHang.Areas.Admin.Controllers
                 obj_Product.Avartar = fileName;
                 obj_Product.ImageFile.SaveAs(Path.Combine(Server.MapPath("~/Content/images/all_product"), fileName));
             }
+
+            //Common objCommon = new Common();
+            ////Lấy dữ liệu danh mục dưới DB lên
+            //var listCat2 = objWebBanHangEntities.Categories.ToList();
+            ////Convert  sang select list dạng value, text
+            //ListtoDataTableConverter converter = new ListtoDataTableConverter();
+            //DataTable dtCategory1 = converter.ToDataTable(listCat2);
+            //ViewBag.ListCategory1 = objCommon.ToSelectList(dtCategory1, "Id", "CategoryName");
+
 
             objWebBanHangEntities.Entry(obj_Product).State = EntityState.Modified;
             objWebBanHangEntities.SaveChanges();

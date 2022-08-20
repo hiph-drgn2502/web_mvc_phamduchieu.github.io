@@ -6,10 +6,9 @@
 }
 
 <div class="content-wrapper">
-    <center><strong><h1 class="text-danger">Chi tiết sản phẩm</h1></strong></center>
+    <center><h1 class="text-danger"><strong>Chi tiết sản phẩm</strong></h1></center>
 
-    <div>
-        <h4>Sản phẩm</h4>
+    <div class="ml-2">
         <hr />
         <dl class="dl-horizontal">
             <dt>
@@ -135,7 +134,7 @@
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Quay lại danh sách", "Index")
     </p>
 </div>

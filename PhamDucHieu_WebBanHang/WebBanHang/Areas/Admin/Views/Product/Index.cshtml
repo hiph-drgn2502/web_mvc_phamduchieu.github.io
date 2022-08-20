@@ -209,9 +209,9 @@
             <th>
                 <center>@Html.DisplayNameFor(model => model.FirstOrDefault().ShortDes)</center>
             </th>
-            <th>
+            @*<th>
                 <center>@Html.DisplayNameFor(model => model.FirstOrDefault().FullDescription)</center>
-            </th>
+            </th>*@
             <th>
                 <center>@Html.DisplayNameFor(model => model.FirstOrDefault().Price)</center>
             </th>
@@ -245,9 +245,9 @@
                 <td>
                     <center>@Html.DisplayFor(modelItem => item.ShortDes)</center>
                 </td>
-                <td>
+                @*<td>
                     <center>@Html.DisplayFor(modelItem => item.FullDescription)</center>
-                </td>
+                </td>*@
                 <td>
                     <center> @Html.DisplayFor(modelItem => item.Price)</center>
                 </td>
@@ -265,9 +265,9 @@
                 </td>
                 <td>
                     <center>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        @Html.ActionLink("Sửa", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Chi tiết", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
                     </center>
                 </td>
             </tr>
