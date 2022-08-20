@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -15,10 +16,34 @@ namespace WebBanHang.Areas.Admin.Controllers
     {
         WebBanHangEntities objWebBanHangEntities = new WebBanHangEntities();
         // Danh sách sản phẩm
-        public ActionResult Index()
+        public ActionResult Index(string currentFilter, string SearchString, int? page)
         {
-            var listProduct = objWebBanHangEntities.Products.ToList();
-            return View(listProduct);
+            var listProduct = new List<Product>();
+            if (SearchString != null)
+            {
+                page = 1;
+            }else
+            {
+                SearchString = currentFilter;
+            }
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                //Lấy ds sản phẩm theo từ khóa tìm kiếm
+                listProduct = objWebBanHangEntities.Products.Where(n => n.ProductName.Contains(SearchString)).ToList();
+            }
+            else
+            {
+                //Lấy tất cả sản phẩm trong bảng product
+                listProduct = objWebBanHangEntities.Products.ToList();
+            }
+            ViewBag.CurrentFilter = SearchString;
+            //Số lượng item của 1 trang là 4
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+            //sắp xếp theo id sản phẩm, sp mới đưa lên đầu
+            listProduct = listProduct.OrderByDescending(n => n.Id).ToList();
+            return View(listProduct.ToPagedList(pageNumber, pageSize));
+            //return View(listProduct);
         }
         //Chi tiết sản phẩm
         public ActionResult Details(int Id)

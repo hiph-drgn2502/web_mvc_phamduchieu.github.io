@@ -164,3 +164,7 @@ D:\web_mvc_phamduchieu.github.io\PhamDucHieu_WebBanHang\WebBanHang\obj\Debug\Web
 D:\web_mvc_phamduchieu.github.io\PhamDucHieu_WebBanHang\WebBanHang\obj\Debug\WebBanHang.csproj.CopyComplete
 D:\web_mvc_phamduchieu.github.io\PhamDucHieu_WebBanHang\WebBanHang\obj\Debug\WebBanHang.dll
 D:\web_mvc_phamduchieu.github.io\PhamDucHieu_WebBanHang\WebBanHang\obj\Debug\WebBanHang.pdb
+D:\web_mvc_phamduchieu.github.io\PhamDucHieu_WebBanHang\WebBanHang\bin\PagedList.dll
+D:\web_mvc_phamduchieu.github.io\PhamDucHieu_WebBanHang\WebBanHang\bin\PagedList.xml
+D:\web_mvc_phamduchieu.github.io\PhamDucHieu_WebBanHang\WebBanHang\bin\PagedList.Mvc.dll
+D:\web_mvc_phamduchieu.github.io\PhamDucHieu_WebBanHang\WebBanHang\bin\PagedList.Mvc.xml

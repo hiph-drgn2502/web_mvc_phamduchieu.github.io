@@ -1,91 +1,284 @@
-﻿@model IEnumerable<WebBanHang.Context.Product>
+﻿@*@model IEnumerable<WebBanHang.Context.Product>*@
+
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<WebBanHang.Context.Product>
+
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .pagination {
+        display: inline-block;
+        padding-left: 0;
+        margin: 20px 0;
+        border-radius: 4px;
+    }
 
+        .pagination >li {
+            display: inline;
+        }
+
+            .pagination > li > a,
+            .pagination > li > span {
+                position: relative;
+                float: left;
+                padding: 6px 12px;
+                margin-left: -1px;
+                line-height: 1.428571429;
+                text-decoration: none;
+                background-color: #ffffff;
+                border: 1px solid #dddddd;
+            }
+            .pagination > li:first-child > a,
+            .pagination > li:last-child > span {
+                border-top-right-radius: 4px;
+                border-bottom-right-radius: 4px;
+            }
+
+            .pagination > li:last-child > a,
+            .pagination > li:last-child > span {
+                border-top-right-radius: 4px;
+                border-bottom-right-radius: 4px;
+            }
+
+            .pagination > li > a:hover,
+            .pagination > li > span:hover,
+            .pagination > li > a:focus,
+            .pagination > li > span:focus {
+                background-color: #ff6a00;
+                background-color: #eeeeee;
+            }
+
+        .pagination > .active > a,
+        .pagination > .active > span,
+        .pagination > .active > a:hover,
+        .pagination > .active > span:hover,
+        .pagination > .active > a:focus,
+        .pagination > .active > span:focus {
+            z-index: 2;
+            color: #ffffff;
+            cursor: default;
+            background-color: #428bca;
+            border-color: #428bca;
+        }
+
+        .pagination > .disabled > span,
+        .pagination > .disabled > a,
+        .pagination > .disabled > a:hover,
+        .pagination > .disabled > a:focus {
+            color : #999999;
+            cursor: not-allowed;
+            background-color: #ffffff;
+            border-color: #dddddd;
+        }
+
+        .pagination-lg > li > a,
+        .pagination-lg > li > span {
+            padding: 10px 16px;
+            font-size: 18px; 
+        }
+
+    .pagination-lg > li:first-child > a,
+    .pagination-lg > li:first-child > span {
+        border-bottom-left-radius: 6px;
+        border-top-left-radius: 6px;
+    }
+
+    .pagination-lg > li:last-child > a,
+    .pagination-lg > li:last-child > span {
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+
+    .pagination-sm > li > a,
+    .pagination-sm > li > span {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    .pagination-sm > li:first-child > a,
+    .pagination-sm > li:first-child > span {
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+
+    .pagination-lg > li:last-child > a,
+    .pagination-lg > li:last-child > span {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+
+    .pager {
+        padding-left: 0;
+        margin: 20px 0;
+        text-align: center;
+        list-style: none;
+    }
+        .pager:before,
+        .pager:after {
+            display: table;
+            content: " ";
+        }
+
+        .page:after {
+            clear: both;
+        }
+
+        .pager:before,
+        .pager:after {
+            display: table;
+            content:" ";
+        }
+
+        .page:after {
+            clear: both;
+        }
+        .page li{
+            display: inline;
+        }
+        .pager li > a,
+        .pager li > span {
+            display: inline-block;
+            padding: 5px 14px;
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 15px;
+        }
+
+            .pager li > a:hover,
+            .pager li > a:focus {
+                text-decoration: none;
+                background-color: #eeeeee;
+            }
+        .pager .next > a,
+        .pager .next > span {
+            float: right;
+        }
+
+        .pager .previous > a,
+        .pager .previous > span {
+            float: left;
+        }
+
+        .pager .disabled > a,
+        .pager .disabled > a:hover,
+        .pager .disabled > a:focus,
+        .pager .disabled > span {
+            color: #999999;
+            cursor: not-allowed;
+            background-color: #ffffff;
+        }
+</style>
 
 <div class="content-wrapper">
     <center><strong><h1 class="text-danger">TẤT CẢ SẢN PHẨM</h1></strong></center>
-    <p class="btn btn-outline-danger">
-        @Html.ActionLink("Thêm mới sản phẩm", "Create")
-    </p>
+    <div class="row flex justify-content-between mr-1 ml-1">
+        <div>
+            <p class="btn btn-outline-danger">
+                @Html.ActionLink("Thêm mới sản phẩm", "Create")
+            </p>
+        </div>
+
+        <div>
+            @using (Html.BeginForm("Index", "Product", FormMethod.Get))
+            {
+                <p class="navbar-left justify-content-md-between">
+                    <i class="nav-icon fas fa-search"></i>
+                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                    <input type="submit" value="Tìm kiếm" />
+                </p>
+            }
+        </div>
+
+
+    </div>
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ProductName)
+                <center>@Html.DisplayNameFor(model => model.FirstOrDefault().ProductName)</center>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Avartar)
+                <center>@Html.DisplayNameFor(model => model.FirstOrDefault().Avartar)</center>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CategoryId)
+                <center>@Html.DisplayNameFor(model => model.FirstOrDefault().CategoryId)</center>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ShortDes)
+                <center>@Html.DisplayNameFor(model => model.FirstOrDefault().ShortDes)</center>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FullDescription)
+                <center>@Html.DisplayNameFor(model => model.FirstOrDefault().FullDescription)</center>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                <center>@Html.DisplayNameFor(model => model.FirstOrDefault().Price)</center>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PriceDiscount)
+                <center>@Html.DisplayNameFor(model => model.FirstOrDefault().PriceDiscount)</center>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TypeId)
+                <center>@Html.DisplayNameFor(model => model.FirstOrDefault().TypeId)</center>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Slug)
+                <center>@Html.DisplayNameFor(model => model.FirstOrDefault().Slug)</center>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BrandId)
+                <center>@Html.DisplayNameFor(model => model.FirstOrDefault().BrandId)</center>
             </th>
-            <th></th>
+            <th><center>Chức năng</center></th>
         </tr>
 
         @foreach (var item in Model)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ProductName)
+                    <center>@Html.DisplayFor(modelItem => item.ProductName)</center>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Avartar)
+                    <center>@Html.DisplayFor(modelItem => item.Avartar)</center>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.CategoryId)
+                    <center>@Html.DisplayFor(modelItem => item.CategoryId)</center>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ShortDes)
+                    <center>@Html.DisplayFor(modelItem => item.ShortDes)</center>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.FullDescription)
+                    <center>@Html.DisplayFor(modelItem => item.FullDescription)</center>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Price)
+                    <center> @Html.DisplayFor(modelItem => item.Price)</center>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.PriceDiscount)
+                    <center>@Html.DisplayFor(modelItem => item.PriceDiscount)</center>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TypeId)
-                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Slug)
-                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BrandId)
+                    <center>@Html.DisplayFor(modelItem => item.TypeId)</center>
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    <center>@Html.DisplayFor(modelItem => item.Slug)</center>
+                </td>
+                <td>
+                    <center>@Html.DisplayFor(modelItem => item.BrandId)</center>
+                </td>
+                <td>
+                    <center>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </center>
                 </td>
             </tr>
         }
 
     </table>
+
+    <center>
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, currentFilter = ViewBag.CurrentFilter }))
+    </center>
 </div>
