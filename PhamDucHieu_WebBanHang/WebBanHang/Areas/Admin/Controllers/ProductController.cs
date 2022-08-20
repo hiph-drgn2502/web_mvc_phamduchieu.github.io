@@ -150,9 +150,9 @@ namespace WebBanHang.Areas.Admin.Controllers
         }
         //Sửa
         [HttpGet]
-        public ActionResult Edit(int Id, Product obj_Product)
+        public ActionResult Edit(int Id)
         {
-            var objProduct = objWebBanHangEntities.Products.Where(n => n.Id == Id).FirstOrDefault();
+            var obj_Product = objWebBanHangEntities.Products.Where(n => n.Id == Id).FirstOrDefault();
 
             return View(obj_Product);
         }
@@ -186,6 +186,7 @@ namespace WebBanHang.Areas.Admin.Controllers
 
             objWebBanHangEntities.Entry(obj_Product).State = EntityState.Modified;
             objWebBanHangEntities.SaveChanges();
+            //return View(objWebBanHangEntities);
             return RedirectToAction("Index");
         }
     }

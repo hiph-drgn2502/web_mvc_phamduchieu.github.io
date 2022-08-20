@@ -174,7 +174,7 @@
 </style>
 
 <div class="content-wrapper">
-    <center><strong><h1 class="text-danger">TẤT CẢ SẢN PHẨM</h1></strong></center>
+    <center><h1 class="text-danger"><strong>TẤT CẢ SẢN PHẨM</strong></h1></center>
     <div class="row flex justify-content-between mr-1 ml-1">
         <div>
             <p class="btn btn-outline-danger">
@@ -202,6 +202,7 @@
             </th>
             <th>
                 <center>@Html.DisplayNameFor(model => model.FirstOrDefault().Avartar)</center>
+                @*<img src="@Url.Content("~Content/images/all_product/model.Avartar")/>*@
             </th>
             <th>
                 <center>@Html.DisplayNameFor(model => model.FirstOrDefault().CategoryId)</center>
@@ -272,7 +273,6 @@
                 </td>
             </tr>
         }
-
     </table>
 
     <center>
