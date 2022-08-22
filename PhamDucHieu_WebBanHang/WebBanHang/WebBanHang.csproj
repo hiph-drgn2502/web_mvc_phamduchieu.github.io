@@ -203,6 +203,7 @@
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\PartialMetadataType.cs" />
     <Compile Include="Models\ProductMasterData.cs" />
+    <Compile Include="Models\ShoppingCartModel.cs" />
     <Compile Include="Models\UserMasterData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -2849,8 +2850,6 @@
     <Content Include="Views\ProfileSetting\Index.cshtml" />
     <Content Include="Views\ProfileWishList\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
-    <Content Include="Views\UserLogin\Index.cshtml" />
-    <Content Include="Views\UserRegister\Index.cshtml" />
     <Content Include="Views\Category\ProductCategory.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />

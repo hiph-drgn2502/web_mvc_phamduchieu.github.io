@@ -202,7 +202,6 @@
             </th>
             <th>
                 <center>@Html.DisplayNameFor(model => model.FirstOrDefault().Avartar)</center>
-                @*<img src="@Url.Content("~Content/images/all_product/model.Avartar")/>*@
             </th>
             <th>
                 <center>@Html.DisplayNameFor(model => model.FirstOrDefault().CategoryId)</center>
@@ -234,37 +233,38 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td style ="vertical-align: middle;">
                     <center>@Html.DisplayFor(modelItem => item.ProductName)</center>
                 </td>
-                <td>
-                    <center>@Html.DisplayFor(modelItem => item.Avartar)</center>
+                <td style ="vertical-align: middle;">
+                    @*<center>@Html.DisplayFor(modelItem => item.Avartar)</center>*@
+                        <center><img style="width:100px;" src="@Url.Content("/Content/images/all_product/" + item.Avartar)" /></center>
                 </td>
-                <td>
+                <td style ="vertical-align: middle;">
                     <center>@Html.DisplayFor(modelItem => item.CategoryId)</center>
                 </td>
-                <td>
+                <td style ="vertical-align: middle;">
                     <center>@Html.DisplayFor(modelItem => item.ShortDes)</center>
                 </td>
                 @*<td>
                     <center>@Html.DisplayFor(modelItem => item.FullDescription)</center>
                 </td>*@
-                <td>
+                <td style ="vertical-align: middle;">
                     <center> @Html.DisplayFor(modelItem => item.Price)</center>
                 </td>
-                <td>
+                <td style ="vertical-align: middle;">
                     <center>@Html.DisplayFor(modelItem => item.PriceDiscount)</center>
                 </td>
-                <td>
+                <td style ="vertical-align: middle;">
                     <center>@Html.DisplayFor(modelItem => item.TypeId)</center>
                 </td>
-                <td>
+                <td style ="vertical-align: middle;">
                     <center>@Html.DisplayFor(modelItem => item.Slug)</center>
                 </td>
-                <td>
+                <td style ="vertical-align: middle;">
                     <center>@Html.DisplayFor(modelItem => item.BrandId)</center>
                 </td>
-                <td>
+                <td style ="vertical-align: middle;">
                     <center>
                         @Html.ActionLink("Sửa", "Edit", new { id = item.Id }) |
                         @Html.ActionLink("Chi tiết", "Details", new { id = item.Id }) |
