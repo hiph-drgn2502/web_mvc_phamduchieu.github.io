@@ -152,42 +152,60 @@ namespace WebBanHang.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int Id)
         {
-            var obj_Product = objWebBanHangEntities.Products.Where(n => n.Id == Id).FirstOrDefault();
+            //var obj_Product = objWebBanHangEntities.Products.Where(n => n.Id == Id).FirstOrDefault();
+            //return View(obj_Product);
 
-            return View(obj_Product);
+            var listCat = objWebBanHangEntities.Categories.ToList();
+            ViewBag.ListCategory = new SelectList(listCat, "Id", "CategoryName", 0);
+
+            var listBrand = objWebBanHangEntities.Brands.ToList();
+            ViewBag.ListBrand = new SelectList(listBrand, "Id", "BrandName", 0);
+
+            Product row = objWebBanHangEntities.Products.AsNoTracking().Where(n => n.Id == Id).FirstOrDefault();
+            return View(row);
         }
 
+        [ValidateInput(false)]
         [HttpPost]
         public ActionResult Edit(Product obj_Product)
         {
             //this.LoadData();
 
-            if (obj_Product.ImageFile != null)
+            try
             {
-                string fileName = Path.GetFileNameWithoutExtension(obj_Product.ImageFile.FileName);
-                //ten hinh
-                string extension = Path.GetExtension(obj_Product.ImageFile.FileName);
-                //png
-                fileName = fileName + extension;
-                //fileName = fileName + "_" + long.Parse(DateTime.Now.ToString("yyyyMMddhhmmss")) + extension;
-                //tenhinh.png
-                obj_Product.Avartar = fileName;
-                obj_Product.ImageFile.SaveAs(Path.Combine(Server.MapPath("~/Content/images/all_product"), fileName));
+                if (obj_Product.ImageFile != null)
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(obj_Product.ImageFile.FileName);
+                    //ten hinh
+                    string extension = Path.GetExtension(obj_Product.ImageFile.FileName);
+                    //png
+                    fileName = fileName + extension;
+                    //fileName = fileName + "_" + long.Parse(DateTime.Now.ToString("yyyyMMddhhmmss")) + extension;
+                    //tenhinh.png
+                    obj_Product.Avartar = fileName;
+                    obj_Product.ImageFile.SaveAs(Path.Combine(Server.MapPath("~/Content/images/all_product"), fileName));
+                }else
+                {
+                    Product item = objWebBanHangEntities.Products.AsNoTracking().Where(n => n.Id == obj_Product.Id).FirstOrDefault();
+                    obj_Product.Avartar = item.Avartar;
+                }
+                if (obj_Product.CategoryId == null)
+                {
+                    obj_Product.CategoryId = 0;
+                }
+
+                obj_Product.UpdatedOnUtc = DateTime.Now;
+                objWebBanHangEntities.Entry(obj_Product).State = EntityState.Modified;
+                objWebBanHangEntities.SaveChanges();
+                return RedirectToAction("Index");
             }
-
-            //Common objCommon = new Common();
-            ////Lấy dữ liệu danh mục dưới DB lên
-            //var listCat2 = objWebBanHangEntities.Categories.ToList();
-            ////Convert  sang select list dạng value, text
-            //ListtoDataTableConverter converter = new ListtoDataTableConverter();
-            //DataTable dtCategory1 = converter.ToDataTable(listCat2);
-            //ViewBag.ListCategory1 = objCommon.ToSelectList(dtCategory1, "Id", "CategoryName");
-
-
-            objWebBanHangEntities.Entry(obj_Product).State = EntityState.Modified;
-            objWebBanHangEntities.SaveChanges();
-            //return View(objWebBanHangEntities);
-            return RedirectToAction("Index");
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                var listCat = objWebBanHangEntities.Categories.ToList();
+                ViewBag.ListCategory = new SelectList(listCat, "Id", "CategoryName", 0);
+                return View(obj_Product);
+            }
         }
     }
 }
