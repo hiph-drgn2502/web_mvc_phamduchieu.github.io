@@ -238,7 +238,8 @@
                 </td>
                 <td style ="vertical-align: middle;">
                     @*<center>@Html.DisplayFor(modelItem => item.Avartar)</center>*@
-                        <center><img style="width:100px;" src="@Url.Content("/Content/images/all_product/" + item.Avartar)" /></center>
+                        @*<center><img style="width:100px;" src="@Url.Content("/Content/images/all_product/" + item.Avartar)" /></center>*@
+                        <center><img style="width:100px;" src="~/Content/images/all_product/@item.Avartar" /></center>
                 </td>
                 <td style ="vertical-align: middle;">
                     <center>@Html.DisplayFor(modelItem => item.CategoryId)</center>

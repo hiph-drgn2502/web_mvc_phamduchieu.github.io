@@ -81,6 +81,7 @@
     <EntitySet Name="ProductBrands" EntityType="WebBanHangModel.ProductBrand" />
     <EntitySet Name="ProductAccessories" EntityType="WebBanHangModel.ProductAccessory" />
     <EntitySet Name="ProductRecommendeds" EntityType="WebBanHangModel.ProductRecommended" />
+    <EntitySet Name="OrderDetails" EntityType="WebBanHangModel.OrderDetail" />
   </EntityContainer>
   <EntityType Name="SaleProduct">
     <Key>
@@ -165,5 +166,14 @@
     <Property Name="DisplayOrder" Type="Int32" />
     <Property Name="CreatedOnUtc" Type="DateTime" Precision="3" />
     <Property Name="UpdatedOnUtc" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderId" Type="Int32" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
   </EntityType>
 </Schema>

@@ -62,7 +62,7 @@
                                 <div class="card-banner border-bottom">
                                     <div class="py-3" style="width:80%">
                                         <h6 class="card-title">@item.CategoryName</h6>
-                                        <a href="#" class="btn btn-secondary btn-sm"> Mua ngay </a>
+                                        <a href="@Url.Action("ProductCategory","Category", new { Id=item.Id})" class="btn btn-secondary btn-sm">Mua ngay</a>
                                     </div>
                                     <img src="~/Content/images/category/@item.Avartar" height="80" class="img-bg">
                                 </div>

@@ -68,17 +68,17 @@ namespace WebBanHang.Areas.Admin.Controllers
             {
                 try
                 {
-                    if (objProduct.ImageFile != null)
+                    if (objProduct.ImageUpload != null)
                     {
-                        string fileName = Path.GetFileNameWithoutExtension(objProduct.ImageFile.FileName);
+                        string fileName = Path.GetFileNameWithoutExtension(objProduct.ImageUpload.FileName);
                         //ten hinh
-                        string extension = Path.GetExtension(objProduct.ImageFile.FileName);
+                        string extension = Path.GetExtension(objProduct.ImageUpload.FileName);
                         //png
                         fileName = fileName + extension;
                         //fileName = fileName + "_" + long.Parse(DateTime.Now.ToString("yyyyMMddhhmmss")) + extension;
                         //tenhinh.png
                         objProduct.Avartar = fileName;
-                        objProduct.ImageFile.SaveAs(Path.Combine(Server.MapPath("~/Content/images/all_product"), fileName));
+                        objProduct.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/all_product"), fileName));
                     }
                     objProduct.CreateOnUtc = DateTime.Now;
                     objWebBanHangEntities.Products.Add(objProduct);
@@ -173,17 +173,17 @@ namespace WebBanHang.Areas.Admin.Controllers
 
             try
             {
-                if (obj_Product.ImageFile != null)
+                if (obj_Product.ImageUpload != null)
                 {
-                    string fileName = Path.GetFileNameWithoutExtension(obj_Product.ImageFile.FileName);
+                    string fileName = Path.GetFileNameWithoutExtension(obj_Product.ImageUpload.FileName);
                     //ten hinh
-                    string extension = Path.GetExtension(obj_Product.ImageFile.FileName);
+                    string extension = Path.GetExtension(obj_Product.ImageUpload.FileName);
                     //png
                     fileName = fileName + extension;
                     //fileName = fileName + "_" + long.Parse(DateTime.Now.ToString("yyyyMMddhhmmss")) + extension;
                     //tenhinh.png
                     obj_Product.Avartar = fileName;
-                    obj_Product.ImageFile.SaveAs(Path.Combine(Server.MapPath("~/Content/images/all_product"), fileName));
+                    obj_Product.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/all_product"), fileName));
                 }else
                 {
                     Product item = objWebBanHangEntities.Products.AsNoTracking().Where(n => n.Id == obj_Product.Id).FirstOrDefault();

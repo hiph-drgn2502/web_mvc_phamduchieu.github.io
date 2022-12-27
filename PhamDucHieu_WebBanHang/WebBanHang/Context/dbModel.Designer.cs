@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\STUDY\HK3\ASP.NET\WebsiteBanHang\PhamDucHieu_WebBanHang\WebBanHang\Context\dbModel.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\web_mvc_phamduchieu.github.io\PhamDucHieu_WebBanHang\WebBanHang\Context\dbModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

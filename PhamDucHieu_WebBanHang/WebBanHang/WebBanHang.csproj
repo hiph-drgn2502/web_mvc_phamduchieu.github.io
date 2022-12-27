@@ -162,6 +162,9 @@
     <Compile Include="Context\Order.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\OrderDetail.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\Product.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
@@ -208,6 +211,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\admin\dist\img\mu.JPG" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -340,6 +344,8 @@
     <Content Include="Content\images\avatars\avatar1.jpg" />
     <Content Include="Content\images\avatars\avatar2.jpg" />
     <Content Include="Content\images\avatars\avatar3.jpg" />
+    <Content Include="Content\images\avatars\hi.jpg" />
+    <Content Include="Content\images\avatars\IMG_1973.jpg" />
     <Content Include="Content\images\banners\ad-sm.png" />
     <Content Include="Content\images\banners\ad.png" />
     <Content Include="Content\images\banners\banner-item1.jpg" />

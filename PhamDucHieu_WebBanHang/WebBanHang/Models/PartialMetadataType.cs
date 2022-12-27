@@ -20,5 +20,7 @@ namespace WebBanHang.Context
     {
         [NotMapped]
         public HttpPostedFileBase ImageUpload { get; set; }
+        //public object ImageFile { get; internal set; }
+        public DateTime CreateOnUtc { get; internal set; }
     }
 }

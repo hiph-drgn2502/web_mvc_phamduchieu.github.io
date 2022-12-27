@@ -1,5 +1,5 @@
 create database WebBanHang
-
+use WebBanHang
 go
 create table Brand (
 	Id int identity(1,1) primary key,
@@ -33,6 +33,16 @@ create table Orders (
 	OrderStatus int,
 	CreatedOnUtc datetime,
 );
+
+create table OrderDetail (
+	Id int identity(1,1) primary key,
+	OrderId int ,
+	ProductId int,
+	Quantity int,
+);
+
+alter table OrderDetail
+alter column OrderId int
 
 
 

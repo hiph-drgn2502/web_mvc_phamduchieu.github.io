@@ -39,9 +39,9 @@
                     <table class="table table-borderless table-shopping-cart">
                         <thead class="text-muted">
                             <tr class="small text-uppercase">
-                                <th scope="col">Product</th>
-                                <th scope="col" width="120">Quantity</th>
-                                <th scope="col" width="120">Price</th>
+                                <th scope="col">Sản phẩm</th>
+                                <th scope="col" width="120">Số lượng</th>
+                                <th scope="col" width="120">Giá tiền</th>
                                 <th scope="col" class="text-right" width="200"> </th>
                             </tr>
                         </thead>
@@ -69,15 +69,15 @@
                                         </td>
                                         <td class="text-right">
                                             <input type="hidden" value="@item.Product.Id" id="productid" />
-                                            <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a>
-                                            <a href="" class="btn btn-light" id="removecart"> Remove</a>
+                                            <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"><i class="fa fa-heart"></i></a>
+                                            <a href="" class="btn btn-light" id="removecart">❌</a>
                                         </td>
                                     </tr>
                                 }
                             }
                             else
                             {
-                                <p>Chưa có sản phẩm trong giỏ hàng</p>
+                                <p style="margin-left: 22px">Chưa có sản phẩm trong giỏ hàng</p>
                             }
 
 
@@ -85,31 +85,19 @@
                     </table>
 
                     <div class="card-body border-top">
-                        <a href="#" class="btn btn-primary float-md-right"> Make Purchase <i class="fa fa-chevron-right"></i> </a>
-                        <a href="#" class="btn btn-light"> <i class="fa fa-chevron-left"></i> Continue shopping </a>
+                        <a href="https://localhost:44370/Payment" class="btn btn-primary float-md-right"> Mua hàng <i class="fa fa-chevron-right"></i> </a>
+                        <a href="https://localhost:44370/" class="btn btn-light"> <i class="fa fa-chevron-left"></i> Tiếp tục mua hàng </a>
                     </div>
                 </div> <!-- card.// -->
 
                 <div class="alert alert-success mt-3">
-                    <p class="icontext"><i class="icon text-success fa fa-truck"></i> Free Delivery within 1-2 weeks</p>
+                    <p class="icontext"><i class="icon text-success fa fa-truck"></i>Giao hàng miễn phí trong vòng 1-2 tuần</p>
                 </div>
 
             </main> <!-- col.// -->
             <aside class="col-md-3">
                 <div class="card mb-3">
-                    <div class="card-body">
-                        <form>
-                            <div class="form-group">
-                                <label>Have coupon?</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" name="" placeholder="Coupon code">
-                                    <span class="input-group-append">
-                                        <button class="btn btn-primary">Apply</button>
-                                    </span>
-                                </div>
-                            </div>
-                        </form>
-                    </div> <!-- card-body.// -->
+                    <!<i class="fa-solid fa-x"></i>
                 </div>  <!-- card .// -->
                 <div class="card">
                     <div class="card-body">
@@ -141,22 +129,16 @@
 <!-- ========================= SECTION  ========================= -->
 <section class="section-name border-top padding-y">
     <div class="container">
-        <h6>Payment and refund policy</h6>
+        <h6>Chính sách thanh toán và hoàn trả</h6>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Trong quá trình đặt hàng, quý khách chọn hình thức Thanh toán bằng thẻ ATM nội địa,
+            quý khách sẽ được chuyển đến Cổng thanh toán trực tuyến bảo mật Onepay để thanh toán.
+            Thẻ ATM của quý khách bắt buộc phải sử dụng Internet Banking để thực hiện phương thức
+            thanh toán này.
         </p>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Trong quá trình đặt hàng, quý khách chọn hình thức Thanh toán bằng thẻ Visa/Master card,
+            quý khách sẽ được chuyển đến Cổng thanh toán trực tuyến bảo mật Onepay để thanh toán.
         </p>
 
     </div><!-- container // -->

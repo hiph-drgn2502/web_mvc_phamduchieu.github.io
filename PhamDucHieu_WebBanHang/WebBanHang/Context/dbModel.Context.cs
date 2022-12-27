@@ -34,5 +34,6 @@ namespace WebBanHang.Context
         public virtual DbSet<ProductBrand> ProductBrands { get; set; }
         public virtual DbSet<ProductAccessory> ProductAccessories { get; set; }
         public virtual DbSet<ProductRecommended> ProductRecommendeds { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
     }
 }

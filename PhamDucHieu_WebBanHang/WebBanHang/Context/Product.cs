@@ -11,10 +11,7 @@ namespace WebBanHang.Context
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Web;
-
+    
     public partial class Product
     {
         public int Id { get; set; }
@@ -33,11 +30,5 @@ namespace WebBanHang.Context
         public Nullable<int> DisplayOrder { get; set; }
         public Nullable<System.DateTime> CreatedOnUtc { get; set; }
         public Nullable<System.DateTime> UpdatedOnUtc { get; set; }
-        //public object ImageUpload { get; internal set; }
-        [DisplayName("Upload Image")]
-        public string Image { get; set; }
-        [NotMapped]
-        public HttpPostedFileBase ImageFile { get; set; }
-        public DateTime CreateOnUtc { get; internal set; }
     }
 }
